@@ -4,7 +4,7 @@ import requests
 class DadosRepositorios:
   def __init__(self, owner):
     self.owner = owner
-    self.access_token = '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'
+    self.access_token = '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'
     self.api_base_url = 'https://api.github.com'
     self.headers = {
       'Authorization': 'Bearer ' + self.access_token, 
@@ -42,7 +42,7 @@ class DadosRepositorios:
             pass
     return repos_languages
 
-  def generate_df(self):
+  def generate_df(self, name):
     repositories = self.fetch_repositories()
     names = self.fetch_repo_names(repositories)
     languages = self.fetch_repo_languages(repositories)
@@ -50,9 +50,10 @@ class DadosRepositorios:
     df = pd.DataFrame()
     df['repository_name'] = names
     df['language'] = languages
+    df.to_csv('dados/' + name + '.csv')
     return df
 
 # Testes ...
 mkafonso = DadosRepositorios('mkafonso')
-response = mkafonso.generate_df()
+response = mkafonso.generate_df('mkafonso')
 print(response)
