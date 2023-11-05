@@ -5,7 +5,7 @@ import base64
 class ManipulaDados:
   def __init__(self, username):
     self.username = username
-    self.access_token = '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'
+    self.access_token = 'VALID_ACCESS_TOKEN'
     self.api_base_url = 'https://api.github.com'
     self.headers = {
       'Authorization': 'Bearer ' + self.access_token, 
